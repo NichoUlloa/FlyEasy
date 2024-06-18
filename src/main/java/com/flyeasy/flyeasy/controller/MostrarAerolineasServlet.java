@@ -12,9 +12,11 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet(name = "mostrarAerolineasServlet", value = "/mostrarAerolineas")
+
+@WebServlet(name = "MostrarAerolineasServlet", value = "/mostrarAerolineas")
 public class MostrarAerolineasServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
@@ -26,14 +28,18 @@ public class MostrarAerolineasServlet extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         try {
-            List<Aerolinea> aerolineas = AerolineaDAO.obtenerAerolineas(DBGenerator.conectarBD("FlyEasyDB"));
-            req.setAttribute("aerolineas", aerolineas);
-            RequestDispatcher respuesta = req.getRequestDispatcher("/mostrarAerolineas.jsp");
-            respuesta.forward(req, resp);
+            List<Aerolinea> aerolineas = AerolineaDAO.obtenerAerolineas();
+            request.setAttribute("aerolineas", aerolineas);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/mostrarAerolineas.jsp");
+            dispatcher.forward(request, response);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 }
+

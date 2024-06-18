@@ -37,10 +37,10 @@
             <tbody>
             <c:forEach var="aerolinea" items="${aerolineas}">
                 <tr>
-                    <td><c:out value="${aerolinea.idAerolinea}"/></td>
+                    <td><c:out value="${aerolinea.id}"/></td>
                     <td><c:out value="${aerolinea.nombre}"/></td>
                     <td><c:out value="${aerolinea.codigoIATA}"/></td>
-                    <td><c:out value="${aerolinea.imagenCorporativa}"/></td>
+                    <td><img src="${aerolinea.imagenCorporativa}" alt="Imagen Corporativa"/></td>
                 </tr>
             </c:forEach>
             </tbody>
@@ -52,4 +52,3 @@
 </footer>
 </body>
 </html>
-

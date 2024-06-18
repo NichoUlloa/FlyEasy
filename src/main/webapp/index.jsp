@@ -3,10 +3,13 @@
 <html>
 <head>
     <title>Página Principal - Fly Easy</title>
-    <link rel="stylesheet" type="text/css" href="css/estilos.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/estilos.css">
 </head>
 <body>
-<h1 class="encabezado">Fly Easy - Gestión de Vuelos</h1>
+
+<header>
+    <h1>Gestión de Productos</h1>
+</header>
 <nav>
     <ul>
         <li><a href="registroVuelo.jsp">Registrar Vuelo</a></li>
@@ -19,5 +22,16 @@
         <li><a href="mostrarPasajes.jsp">Mostrar Pasajes</a></li>
     </ul>
 </nav>
+<main>
+    <section>
+        <h2>Bienvenido a Fly Easy</h2>
+        <p>Utilice las opciones del menú para gestionar los vuelos.</p>
+    </section>
+</main>
+<footer>
+    <p>&copy; 2024 Fly Easy. Todos los derechos reservados.</p>
+</footer>
 </body>
 </html>
+
+

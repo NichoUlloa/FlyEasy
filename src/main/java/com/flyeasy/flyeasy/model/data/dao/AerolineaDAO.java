@@ -2,9 +2,12 @@ package com.flyeasy.flyeasy.model.data.dao;
 
 import com.flyeasy.flyeasy.model.Aerolinea;
 import com.flyeasy.flyeasy.model.data.DBConnector;
+import com.flyeasy.flyeasy.model.data.DBGenerator;
 import org.jooq.*;
 import org.jooq.Record;
 import org.jooq.impl.DSL;
+
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,9 +27,10 @@ public class AerolineaDAO {
                 .execute();
     }
 
-    public static List<Aerolinea> obtenerAerolineas(DSLContext query) {
+    public static List<Aerolinea> obtenerAerolineas() throws SQLException, ClassNotFoundException {
         List<Aerolinea> aerolineas = new ArrayList<>();
-        Result<?> resultados = query.select().from(DSL.table("Aerolinea")).fetch();
+        DSLContext query = DBGenerator.conectarBD("FlyEasyDB");
+        Result<?> resultados = query.select().from("Aerolinea").fetch();
         for (Record resultado : resultados) {
             aerolineas.add(new Aerolinea(
                     resultado.get("id", Integer.class),
