@@ -40,13 +40,13 @@
             <tbody>
             <c:forEach var="pasajero" items="${pasajeros}">
                 <tr>
-                    <td><c:out value="${pasajero.idPasajero}"/></td>
-                    <td><c:out value="${pasajero.nombreCompleto}"/></td>
-                    <td><c:out value="${pasajero.documentoIdentidad}"/></td>
-                    <td><c:out value="${pasajero.telefono}"/></td>
-                    <td><c:out value="${pasajero.correoElectronico}"/></td>
-                    <td><c:out value="${pasajero.fechaNacimiento}"/></td>
-                    <td><c:out value="${pasajero.nacionalidad}"/></td>
+                    <td><c:out value="${pasajero.getId}"/></td>
+                    <td><c:out value="${pasajero.getnombreCompleto}"/></td>
+                    <td><c:out value="${pasajero.getdocumentoIdentidad}"/></td>
+                    <td><c:out value="${pasajero.gettelefono}"/></td>
+                    <td><c:out value="${pasajero.getcorreoElectronico}"/></td>
+                    <td><c:out value="${pasajero.getfechaNacimiento}"/></td>
+                    <td><c:out value="${pasajero.getnacionalidad}"/></td>
                 </tr>
             </c:forEach>
             </tbody>
