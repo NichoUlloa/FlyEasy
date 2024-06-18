@@ -8,10 +8,10 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
-<head>
+<header>
     <title>Registro Exitoso</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/estilos.css">
-</head>
+</header>
 <body>
 <header>
     <h1>Registro Exitoso</h1>

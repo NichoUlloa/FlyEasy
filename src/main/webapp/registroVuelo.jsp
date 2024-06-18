@@ -8,10 +8,10 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
-<head>
+<header>
     <title>Registro de Vuelo</title>
     <link rel="stylesheet" type="text/css" href="css/estilos.css">
-</head>
+</header>
 <body>
 <h1 class="encabezado">Registro de Vuelo</h1>
 <div class="centrado">
