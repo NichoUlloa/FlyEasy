@@ -6,35 +6,52 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
     <title>Mostrar Pasajes</title>
-    <link rel="stylesheet" type="text/css" href="css/estilos.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/estilos.css">
 </head>
 <body>
-<h1 class="encabezado">Pasajes Registrados</h1>
-<div class="centrado">
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>ID del Vuelo</th>
-            <th>ID del Pasajero</th>
-            <th>Tipo de Pasaje</th>
-            <th>Asiento</th>
-        </tr>
-        <c:forEach items="${pasajes}" var="pasaje">
+<header>
+    <h1>Listado de Pasajes</h1>
+</header>
+<nav>
+    <ul>
+        <li><a href="${pageContext.request.contextPath}/index.jsp">Inicio</a></li>
+    </ul>
+</nav>
+<main>
+    <section>
+        <h2>Pasajes Registrados</h2>
+        <table>
+            <thead>
             <tr>
-                <td><c:out value="${pasaje.id}"/></td>
-                <td><c:out value="${pasaje.vuelo.id}"/></td>
-                <td><c:out value="${pasaje.pasajero.id}"/></td>
-                <td><c:out value="${pasaje.tipoPasaje}"/></td>
-                <td><c:out value="${pasaje.asiento}"/></td>
+                <th>ID</th>
+                <th>Tipo</th>
+                <th>Precio</th>
+                <th>ID Vuelo</th>
+                <th>ID Pasajero</th>
             </tr>
-        </c:forEach>
-    </table>
-    <a class="boton" href="index.jsp">Volver</a>
-</div>
+            </thead>
+            <tbody>
+            <c:forEach var="pasaje" items="${pasajes}">
+                <tr>
+                    <td><c:out value="${pasaje.getIdPasaje()}"></c:out></td>
+                    <td><c:out value="${pasaje.getTipo()}"></c:out></td>
+                    <td><c:out value="${pasaje.getPrecio()}"></c:out></td>
+                    <td><c:out value="${pasaje.getIdVuelo()}"></c:out></td>
+                    <td><c:out value="${pasaje.getIdPasajero()}"></c:out></td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
+    </section>
+</main>
+<footer>
+    <p>&copy; 2024 Fly Easy. Todos los derechos reservados.</p>
+</footer>
 </body>
 </html>
+

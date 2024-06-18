@@ -6,33 +6,50 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
     <title>Mostrar Aerolíneas</title>
-    <link rel="stylesheet" type="text/css" href="css/estilos.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/estilos.css">
 </head>
 <body>
-<h1 class="encabezado">Aerolíneas Registradas</h1>
-<div class="centrado">
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Código IATA</th>
-            <th>Imagen Corporativa</th>
-        </tr>
-        <c:forEach items="${aerolineas}" var="aerolinea">
+<header>
+    <h1>Listado de Aerolíneas</h1>
+</header>
+<nav>
+    <ul>
+        <li><a href="${pageContext.request.contextPath}/index.jsp">Inicio</a></li>
+    </ul>
+</nav>
+<main>
+    <section>
+        <h2>Aerolíneas Registradas</h2>
+        <table>
+            <thead>
             <tr>
-                <td><c:out value="${aerolinea.id}"/></td>
-                <td><c:out value="${aerolinea.nombre}"/></td>
-                <td><c:out value="${aerolinea.codigoIATA}"/></td>
-                <td><c:out value="${aerolinea.imagenCorporativa}"/></td>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Código IATA</th>
+                <th>Imagen Corporativa</th>
             </tr>
-        </c:forEach>
-    </table>
-    <a class="boton" href="index.jsp">Volver</a>
-</div>
+            </thead>
+            <tbody>
+            <c:forEach var="aerolinea" items="${aerolineas}">
+                <tr>
+                    <td><c:out value="${aerolinea.idAerolinea}"/></td>
+                    <td><c:out value="${aerolinea.nombre}"/></td>
+                    <td><c:out value="${aerolinea.codigoIATA}"/></td>
+                    <td><c:out value="${aerolinea.imagenCorporativa}"/></td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
+    </section>
+</main>
+<footer>
+    <p>&copy; 2024 Fly Easy. Todos los derechos reservados.</p>
+</footer>
 </body>
 </html>
+
