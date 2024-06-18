@@ -13,7 +13,9 @@ import java.util.List;
 import static org.jooq.impl.DSL.*;
 import static org.jooq.impl.SQLDataType.*;
 
+
 public class VueloDAO {
+
     public static void agregarVuelo(DSLContext query, Vuelo vuelo) {
         Table<?> tablaVuelo = table(name("Vuelo"));
         Field<String> numeroVuelo = field(name("numeroVuelo"), VARCHAR(255));
@@ -54,4 +56,27 @@ public class VueloDAO {
         }
         return vuelos;
     }
+
+    public static Vuelo obtenerVueloPorId(DSLContext query, int id) {
+        Result<?> resultado = query.select().from(DSL.table("Vuelo")).where(DSL.field("id").eq(id)).fetch();
+        if (!resultado.isEmpty()) {
+            Record record = resultado.get(0);
+            return new Vuelo(
+                    record.get("id", Integer.class),
+                    record.get("numeroVuelo", String.class),
+                    record.get("aerolinea", String.class),
+                    record.get("origen", String.class),
+                    record.get("destino", String.class),
+                    record.get("fechaSalida", String.class),
+                    record.get("fechaLlegada", String.class),
+                    record.get("horaSalida", String.class),
+                    record.get("horaLlegada", String.class),
+                    record.get("duracion", String.class),
+                    record.get("tipoAeronave", String.class),
+                    record.get("capacidadPasajeros", Integer.class)
+            );
+        }
+        return null;
+    }
 }
+
